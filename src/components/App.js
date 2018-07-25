@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import QuestionList from './quiz/QuestionList';
+import '../css/bootstrap.css';
+import '../css/style.css';
+
 
 class App extends Component{
 	constructor(props){
@@ -105,7 +109,7 @@ class App extends Component{
 					],
 					correct: 'b'
 
-				},
+				}
 			],
 			score:0,
 			current:1
@@ -113,8 +117,15 @@ class App extends Component{
 	}
 	render(){
 		return(
-				<div>
-				APP
+				<div className="container">
+				<div className="row">
+				<div className="col">
+					<h1>React Quiz</h1>
+					<p className="lead">A Simple quiz app using reactjs.</p>
+					<hr/>
+					<QuestionList {...this.state} />
+				</div>
+				</div>		
 				</div>
 			)
 	}

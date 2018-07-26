@@ -11,7 +11,9 @@ class QuestionList extends Component{
 				<div className="well">
 				{
 						this.props.questions.map(que =>{
-						 return <Question question={que} key={que.id} {...this.props} />
+							if(this.props.current===que.id){
+								return <Question question={que} key={que.id} {...this.props} />
+							}
 						})
 				}
 				 

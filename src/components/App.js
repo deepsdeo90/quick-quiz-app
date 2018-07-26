@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import QuestionList from './quiz/QuestionList';
+import ScoreBoard from './quiz/ScoreBoard';
+import Result from './quiz/Result';
 import '../css/bootstrap.css';
 import '../css/style.css';
 
@@ -115,7 +117,25 @@ class App extends Component{
 			current:1
 		}
 	}
+	setCurrent(current){
+		this.setState({
+			current
+		})
+	}
+	setScore(score){
+		this.setState({
+			score
+		})
+	}
 	render(){
+		if(this.state.current > this.state.questions.length){
+			var scoreboard = '';
+			var result = <Result {...this.state} />
+		}else{
+			var scoreboard = <ScoreBoard {...this.state}/>
+			var result = ''
+					
+ 		}
 		return(
 				<div className="container">
 				<div className="row">
@@ -123,7 +143,9 @@ class App extends Component{
 					<h1>React Quiz</h1>
 					<p className="lead">A Simple quiz app using reactjs.</p>
 					<hr/>
-					<QuestionList {...this.state} />
+					{scoreboard}
+					<QuestionList setCurrent={this.setCurrent.bind(this)} setScore={this.setScore.bind(this)} {...this.state} />
+					{result}
 				</div>
 				</div>		
 				</div>
